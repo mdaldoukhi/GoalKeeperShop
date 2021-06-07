@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+/* Start my style */
+.text-center {
+  text-align: center;
+}
+.text-line {
+  position: relative;
+  font-family: 'Courier New', Courier, monospace;
+  color: #2b4162
+}
+.text-line:after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 10px;
+  background-color: #2d6a4f;
+  top: 40px;
+  right: 41%;
+  border-radius: 10px;
+}
+.descrption {
+  width: 50%;
+  margin: 15px auto;
+  line-height: 1.5;
+  font-family: 'Courier New', Courier, monospace;
+  color: #2b4162;
+}
+#shopImage {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+}

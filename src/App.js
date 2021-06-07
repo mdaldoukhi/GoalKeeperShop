@@ -1,23 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-
+import shopImage from './GoalKeeper.png';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className="text-center text-line">GoalKeeper Station</h1>
+      <h4 className="descrption">Welcome to the official goalkeeper online shop. We know you love soccer, you are a goalkeeper at heart, you excercise hard, you are an important part of your team.</h4>
+      <img id ="shopImage" src={shopImage} />
     </div>
   );
 }
