@@ -48,17 +48,6 @@
   font-family: 'Courier New', Courier, monospace;
   color: #2b4162
 }
-.text-line:after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 5px;
-  background-color: #f2e8cf;
-  border: 2px solid #bc4749;
-  top: 40px;
-  right: 41%;
-  border-radius: 10px;
-}
 .descrption {
   width: 50%;
   margin: 15px auto;
@@ -97,17 +86,18 @@
   text-align: center;
   transition: 0.5s ease-in-out;
   width: 25%;
+  background-color: #fff;
 }
 .List div:hover {
   transform: translateY(-10px);
 }
 .image-product {
-  width: 250px;
+  width: 75%;
 }
 .product-name,
 .product-price {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 20px;
+  font-size: 18px;
   color: #235eb6;
 }
 .product-price span {
