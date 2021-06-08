@@ -7,7 +7,9 @@ function App() {
   
   return (
     <div>
+      {/* Call Home File Contain (title, description, shop image)*/}
       <Home />
+      {/* Call Product File Contain (product list and product items)*/}
       <ProductList />
     </div>
   );
