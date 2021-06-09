@@ -40,69 +40,10 @@
 /* Start my style */
 
 /* Global style */
-.text-center {
-  text-align: center;
-}
-.text-line {
-  position: relative;
-  font-family: 'Courier New', Courier, monospace;
-  color: #2b4162
-}
-.descrption {
-  width: 50%;
-  margin: 15px auto;
-  line-height: 1.5;
-  font-family: 'Courier New', Courier, monospace;
-  color: #2b4162;
-}
-#shopImage {
-  width: 50%;
-  display: block;
-  margin: 0 auto;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 0 5px #386641;
 
-}
 /* Start Product Card */
 .title {
-  color: #bc4749;
-  margin: 30px 100px;
+
 }
-.List {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  width: 80%;
-  margin: 0 auto;
-}
-.List div {
-  border: 1px solid #000;
-  margin: 20px;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 5px #000;
-  text-align: center;
-  transition: 0.5s ease-in-out;
-  width: 25%;
-  background-color: #fff;
-}
-.List div:hover {
-  transform: translateY(-10px);
-}
-.image-product {
-  width: 75%;
-}
-.product-name,
-.product-price {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 18px;
-  color: #235eb6;
-}
-.product-price span {
-  color: #bc4749;
-  font-weight: bold;
-  font-size: 25px;
-}
+
 /* End Product Card */

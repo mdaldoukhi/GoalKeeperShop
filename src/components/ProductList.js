@@ -1,4 +1,5 @@
 import gloves from '../gloves'
+import { ListWrapper, ProductTile } from '../styles';
 import ProductItem from './ProductItem'
 
 function ProductList() {
@@ -6,11 +7,11 @@ function ProductList() {
     return (
         <div>
             {/* Header of the Product */}
-            <h1 className="title">Gloves Product</h1>
-            <div className="List">
+            <ProductTile>Gloves Product</ProductTile>
+            <ListWrapper>
                 {/* push the data to ProductList file by using Props */}
                 {gloves.map((gloves) => (<ProductItem id={gloves.id} name={gloves.name} price={gloves.price} image={gloves.image} />))}
-            </div>
+            </ListWrapper>
         </div>
     );
   }

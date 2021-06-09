@@ -1,12 +1,14 @@
+import { ProductWrapper } from "../styles";
+
 function ProductItem(props) {
 
     return (
         //props from the main data (Gloves.js) and return to the ProductList
-        <div key={props.id}>
-            <img className="image-product" src={props.image} alt={props.name}/>
-            <p className="product-name">{props.name}</p>
-            <p className="product-price">Price: <span>{props.price}</span> KD</p>
-        </div>
+        <ProductWrapper key={props.id}>
+            <img src={props.image} alt={props.name}/>
+            <p>{props.name}</p>
+            <p>Price: <span>{props.price}</span> KD</p>
+        </ProductWrapper>
     )};
   
   export default ProductItem;
