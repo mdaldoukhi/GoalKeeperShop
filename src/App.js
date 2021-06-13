@@ -4,7 +4,7 @@ import ProductList from './components/ProductList';
 import ToggleBtn from "./components/ToggleBtn";
 //Styles
 import {ThemeProvider} from 'styled-components';
-import {GlobalStyle, Toggle} from '../src/styles';
+import {GlobalStyle} from '../src/styles';
 //global useState
 import {useState} from 'react'
 
@@ -22,12 +22,12 @@ const theme = {
 }
 function App() {
   /* Defult value for textmode and page color */
-  const [textMode, setTextMode] = useState("Dark Mode")
-  const [currentMode, setCurrentMode] = useState("light")
+  // const [textMode, setTextMode] = useState("Dark Mode")
+  const [currentMode, setCurrentMode] = useState("dark")
 
   /* function to toggle the page color and text Mode */
   const toggleSwitch = () => {
-    return (currentMode === "light") ? setCurrentMode("dark") & setTextMode("Light Mode") : setCurrentMode("light") & setTextMode("Dark Mode")
+    return (currentMode === "dark") ? setCurrentMode("light") : setCurrentMode("dark") 
     
   }
 

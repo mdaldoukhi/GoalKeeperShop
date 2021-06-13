@@ -1,4 +1,6 @@
 import styled, {createGlobalStyle} from 'styled-components'
+import moon from './moon.png'
+import sun from './sun.png'
 
 export const GlobalStyle = createGlobalStyle `
  body{
@@ -68,64 +70,161 @@ export const ProductWrapper = styled.div `
         }
     }
 `
-export const ToggleSwitch = styled.label `
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+export const ToggleSwitch = styled.div `
+  width: 130px;
+  height:100px;
   margin: 10px 50px;
-
-  input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  .slider {
-    position: absolute;
+  .switch{
+    position: relative;
+    width: 130px;
+    height: 50px;
+    margin: 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image:url(${moon});
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    box-shadow: inset 0px 0px 2px rgba(255,255,255,.7);
+    transition: background-image .7s ease-in-out;
+    outline: none;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+    overflow: hidden;
+}
+  .switch:checked{
+    background-image: url(${sun});
+    background-size: cover;
+    transition: background-image 1s ease-in-out;
   }
 
-  .slider:before {
+  .switch:after{
+    content: '';
+    width: 46px;
+    height:46px;
+    border-radius: 50%;
+    background-color: #fff;
     position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    left: 2px;
+    top: 2px;
+    transform: translateX(0px);
+    animation: off .7s forwards cubic-bezier(.8, .5, .2, 1.4);
+    box-shadow: inset 5px -5px 4px rgba(53, 53, 53, 0.3);
   }
-  input:checked + .slider {
-    background-color: #2196F3;
+  @keyframes off{
+  0%{
+      transform: translateX(80px);
+      width: 46px;
   }
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+  50%{
+      width: 75px;  
+      border-radius: 25px;   
   }
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+  100%{
+      transform: translateX(0px); 
+      width: 46px;
   }
-  /* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
 }
+  .switch:checked:after{
+    animation: on .7s forwards cubic-bezier(.8, .5, .2, 1.4);
+    box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
+  }
 
-.slider.round:before {
-  border-radius: 50%;
-}
+  @keyframes on{
+    0%{
+        transform: translateX(0px);
+        width: 46px;
+    }
+    50%{
+        width: 75px;  
+        border-radius: 25px;   
+    }
+    100%{
+        transform: translateX(80px); 
+        width: 46px;
+    }
+  }
+  .switch:checked:before{
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    transform-origin: 53px 10px;
+    background-color: transparent;
+    box-shadow: 5px -1px 0px #fff;
+    filter: blur(0px);
+    animation: sun .7s forwards ease;
+  }
+  @keyframes sun{
+    0%{
+        transform: rotate(170deg);
+        background-color: transparent;
+        box-shadow: 5px -1px 0px #fff;
+        filter: blur(0px);
+    }
+    50%{
+        background-color: transparent;
+        box-shadow: 5px -1px 0px #fff;
+        filter: blur(0px);
+    }
+    90%{
+        background-color: #f5daaa;
+        box-shadow: 0px 0px 10px #f5deb4,
+        0px 0px 20px #f5deb4,
+        0px 0px 30px #f5deb4,
+        inset 0px 0px 2px #efd3a3;
+        filter: blur(1px);
+    }
+    100%{
+        transform: rotate(0deg);
+        background-color: #f5daaa;
+        box-shadow: 0px 0px 10px #f5deb4,
+        0px 0px 20px #f5deb4,
+        0px 0px 30px #f5deb4,
+        inset 0px 0px 2px #efd3a3;
+        filter: blur(1px);
+    }
+  }
+  .switch:before{
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    filter: blur(1px);
+    background-color: #f5daaa;
+    box-shadow: 0px 0px 10px #f5deb4,
+    0px 0px 20px #f5deb4,
+    0px 0px 30px #f5deb4,
+    inset 0px 0px 2px #efd3a3;
+    transform-origin: 53px 10px;
+    animation: moon .7s forwards ease;
+  }
+  @keyframes moon{
+    0%{
+        transform: rotate(0deg);
+        filter: blur(1px);
+    }
+    50%{
+        filter: blur(1px);
+    }
+    90%{
+        background-color: transparent;
+        box-shadow: 5px -1px 0px #fff;
+        filter: blur(0px);
 
+    }
+    100%{
+        transform: rotate(170deg);
+        background-color: transparent;
+        box-shadow: 5px -1px 0px #fff;
+        filter: blur(0px);
+    }
+  }
 `
 export const Toggle = styled.button `
   padding: 5px 15px;

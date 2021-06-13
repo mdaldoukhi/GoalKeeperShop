@@ -15,8 +15,8 @@ function ProductList() {
                 {/* push the data to ProductList file by using Props */}
                 {
                     gloves
-                    .filter(gloves => gloves.name.includes(quary.toLocaleLowerCase()) || gloves.price == parseInt(quary))
-                    .map(gloves => <ProductItem id={gloves.id} name={gloves.name} image={gloves.image} price={gloves.price}/>)
+                    .filter(gloves => gloves.name.includes(quary.toLowerCase()) || gloves.price === parseInt(quary))
+                    .map(gloves => <ProductItem id={gloves.id} name={gloves.name} image={gloves.image} price={gloves.price} text={quary}/>)
                 }
             </ListWrapper>
         </div>

@@ -3,8 +3,7 @@ function ToggleBtn(props) {
 
     return (
         <ToggleSwitch class="switch" >
-            <input type="checkbox" />
-            <span class="slider round" onClick={props.onClick}></span>
+            <input type="checkbox" name="checkbox" class="switch" onClick={props.onClick}></input>
         </ToggleSwitch>
     )
 }
