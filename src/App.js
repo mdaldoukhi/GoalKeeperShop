@@ -1,6 +1,7 @@
 //components
 import Home from "./components/Home";
 import ProductList from './components/ProductList';
+import ToggleBtn from "./components/ToggleBtn";
 //Styles
 import {ThemeProvider} from 'styled-components';
 import {GlobalStyle, Toggle} from '../src/styles';
@@ -27,11 +28,12 @@ function App() {
   /* function to toggle the page color and text Mode */
   const toggleSwitch = () => {
     return (currentMode === "light") ? setCurrentMode("dark") & setTextMode("Light Mode") : setCurrentMode("light") & setTextMode("Dark Mode")
+    
   }
 
   return (
     <ThemeProvider theme = {theme[currentMode]}>
-    <Toggle onClick={toggleSwitch}>{textMode}</Toggle>
+    <ToggleBtn onClick={toggleSwitch}/>
     <GlobalStyle />
       {/* Call Home File Contain (title, description, shop image)*/}
       <Home />

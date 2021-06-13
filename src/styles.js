@@ -133,4 +133,16 @@ export const Toggle = styled.button `
   font-size: 18px;
   background-color: ${props => props.theme.mainColor};
   color: ${props => props.theme.backgroundColor};
+  border-radius: 10px;
+`
+export const SearchBar = styled.input `
+  padding: 5px 15px;
+  display: block;
+  width: 50%;
+  margin: auto;
+  font-size: 15px;
+
+  ::placeholder {
+    font-size: 15px;
+  }
 `
