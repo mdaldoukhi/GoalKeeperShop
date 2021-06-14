@@ -269,7 +269,7 @@ export const ProductDetails = styled.div `
   text-align: center;
   text-transform: uppercase;
   border-color: #3498db;
-  color: #fff;
+  color: ${props => props.theme.mainColor};
   box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
   transition: all 150ms ease-in-out;
   :hover {
