@@ -33,7 +33,7 @@ function App() {
   }
   /* Here where will show the details and function will check the status of user clicked or not */
   const [glove, setGlove] = useState(false)
-  const setView = () => {return glove ? <ProductDetail glove={glove} onClick={() => setGlove(false)}/> : <ProductList setGlove={setGlove}/>}
+  const setView = () => {return glove ? <ProductDetail glove={glove} setGlove={setGlove}/> : <ProductList setGlove={setGlove}/>}
 
   return (
     <ThemeProvider theme = {theme[currentMode]}>
