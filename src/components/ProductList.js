@@ -1,11 +1,11 @@
-import gloves from '../gloves'
 import { ListWrapper, ProductTile, SearchBar } from '../styles';
 import ProductItem from './ProductItem'
 import { useState } from 'react';
-import { parseInt } from 'lodash';
+
 
 function ProductList(props) {
-    const [quary, setQuary] = useState("")
+    const [quary, setQuary] = useState("");
+
     return (
         <div>
             {/* Header of the Product */}
@@ -14,9 +14,9 @@ function ProductList(props) {
             <ListWrapper>
                 {/* push the data to ProductList file by using Props */}
                 {
-                    gloves
+                    props.gloves
                         .filter(gloves => gloves.name.includes(quary.toLowerCase()) || gloves.price === parseInt(quary))
-                        .map(gloves => <ProductItem id={gloves.id} name={gloves.name} image={gloves.image} price={gloves.price} text={quary} detail={gloves.detail} setGlove={props.setGlove} />)
+                        .map(gloves => <ProductItem id={gloves.id} name={gloves.name} image={gloves.image} price={gloves.price} text={quary} detail={gloves.detail} setGlove={props.setGlove} deletGloves={props.deletGloves}/>)
                 }
             </ListWrapper>
         </div>

@@ -17,7 +17,7 @@ const gloves = [
     },
     {
         id: 3,
-        name: "Nike Phantom Shadow Goalkeeper Gloves",
+        name: "Nike Phantom Shadow Goalkeeper ",
         price: 10,
         detail: "he Nike Goalkeeper Phantom Shadow Gloves are ready to make every save with their breathable padding and grippy foam.",
         image:

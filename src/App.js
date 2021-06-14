@@ -9,17 +9,20 @@ import {GlobalStyle} from '../src/styles';
 //global useState
 import {useState} from 'react'
 import ProductDetail from "./components/ProductDetail";
+import gloves from "./gloves";
 
 const theme = {
  light: {
   mainColor: '#000',
   backgroundColor: '#fff',
-  borderColor: '#fff' 
+  borderColor: '#fff',
+  red: 'red'
   },
   dark: {
   mainColor: '#fff',
   backgroundColor: '#000',
-  borderColor: '#fff'
+  borderColor: '#fff',
+  red: 'red' 
   } 
 }
 function App() {
@@ -31,10 +34,17 @@ function App() {
   const toggleSwitch = () => {
     return (currentMode === "dark") ? setCurrentMode("light") : setCurrentMode("dark") 
   }
-  /* Here where will show the details and function will check the status of user clicked or not */
-  const [glove, setGlove] = useState(false)
-  const setView = () => {return glove ? <ProductDetail glove={glove} setGlove={setGlove}/> : <ProductList setGlove={setGlove}/>}
 
+  const [_gloves, setGloves] = useState(gloves);
+  const deletGloves = (gloveID) => {
+    const updateGloves = _gloves.filter(glove => glove.id !== gloveID)
+    setGloves(updateGloves)
+  }
+  /* Here where will show the details and function will check the status of user clicked or not */
+  const [glove, setGlove] = useState(false);
+  const setView = () => {return glove ? <ProductDetail glove={glove} setGlove={setGlove}/> : <ProductList setGlove={setGlove} gloves={_gloves} deletGloves={deletGloves} />}
+  
+  
   return (
     <ThemeProvider theme = {theme[currentMode]}>
     <ToggleBtn onClick={toggleSwitch}/>

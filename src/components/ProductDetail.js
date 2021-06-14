@@ -1,4 +1,5 @@
 import {ProductDetails} from '../styles';
+import DeleteButton from './Buttons/DeleteButton';
 function ProductDetail(props) {
 
     
@@ -9,6 +10,7 @@ function ProductDetail(props) {
             <p>{props.glove.detail}</p>
             <p>Price: <span>{props.glove.price}</span> KD</p>
             <button onClick={() => props.setGlove(false)}>Back</button>
+            <DeleteButton deletGloves={props.glove.deletGloves} gloveID={props.glove.id} setGlove={props.setGlove}/>
         </ProductDetails>
     )};
   

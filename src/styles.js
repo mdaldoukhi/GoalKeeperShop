@@ -277,3 +277,8 @@ export const ProductDetails = styled.div `
   }
 }
 `;
+export const DeleteBtn = styled.p `
+  color: ${props => props.theme.red} !important;
+  cursor: pointer;
+  font-weight: bold;
+`;
