@@ -245,3 +245,35 @@ export const SearchBar = styled.input `
     font-size: 15px;
   }
 `
+export const ProductDetails = styled.div `
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  img {
+    width: 40%;
+    float: left;
+    margin-right: 20px;
+  }
+  p {
+    vertical-align: middle;
+  }
+  button {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 5px 15px ;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+  font-size: 15px;
+  margin: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  border-color: #3498db;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  transition: all 150ms ease-in-out;
+  :hover {
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  }
+}
+`;
