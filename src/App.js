@@ -15,14 +15,16 @@ const theme = {
   light: {
     mainColor: "#000",
     backgroundColor: "#fff",
-    borderColor: "#fff",
+    borderColor: "#000",
     red: "red",
+    titleColor: '#0071BC'
   },
   dark: {
-    mainColor: "#fff",
-    backgroundColor: "#000",
+    mainColor: "#90A4AE",
+    backgroundColor: "#222",
     borderColor: "#fff",
     red: "red",
+    titleColor: '#ECEFF1'
   },
 };
 function App() {

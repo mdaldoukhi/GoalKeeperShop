@@ -14,7 +14,6 @@ function ProductList(props) {
             <ProductTile>Gloves Product</ProductTile>
             <SearchBar
                 placeholder="Search for your Gloves Brand"
-                type="search"
                 onChange={(event) => setQuary(event.target.value)}
             />
             <ListWrapper>

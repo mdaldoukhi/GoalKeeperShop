@@ -8,7 +8,7 @@ function ProductDetail(props) {
     return (
         <ProductDetails>
             <img src={props.glove.image} alt={props.glove.name} />
-            <p>{props.glove.name}</p>
+            <h2>{props.glove.name}</h2>
             <p>{props.glove.detail}</p>
             <p>
                 Price: <span>{props.glove.price}</span> KD
