@@ -2,14 +2,25 @@
 import Home from "./components/Home";
 import ProductList from "./components/ProductList";
 import ToggleBtn from "./components/ToggleBtn";
+import Navbar from "./components/Navbar";
 import ProductDetail from "./components/ProductDetail";
+
+
 /* Styled-components */
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../src/styles";
+
+
 /* Global useState */
 import { useState } from "react";
+import { Switch, Route } from 'react-router'
+
 /* Gloves Data */
 import gloves from "./gloves";
+
+
+
+
 /* Theme Coloring */
 const theme = {
   light: {
@@ -44,28 +55,29 @@ function App() {
     setGloves(updateGloves);
   };
 
-  /* Here where will show the details and function will check the status of user clicked or not */
-  const [glove, setGlove] = useState(false);
-  const setView = () => {
-    return glove ? (
-      <ProductDetail glove={glove} setGlove={setGlove} />
-    ) : (
-      <ProductList
-        setGlove={setGlove}
+  return (
+    <ThemeProvider theme={theme[currentMode]}>
+    <Navbar currentMode={currentMode}/>
+     <GlobalStyle />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route  path="/products/:productSlug">
+        <ProductDetail  gloves={_gloves} deletGloves={deletGloves}/>
+        </Route>
+        <Route path="/products">
+        <ProductList
         gloves={_gloves}
         deletGloves={deletGloves}
       />
-    );
-  };
-
-  return (
-    <ThemeProvider theme={theme[currentMode]}>
-      <ToggleBtn onClick={toggleSwitch} />
-      <GlobalStyle />
+        </Route>
+      </Switch>
+     
       {/* Call Home File Contain (title, description, shop image)*/}
-      <Home />
       {/* Call function of product details or show all product */}
-      {setView()}
+      {/* {setView()} */}
+      <ToggleBtn onClick={toggleSwitch} />
     </ThemeProvider>
   );
 }

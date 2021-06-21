@@ -3,24 +3,22 @@ import { ProductWrapper } from "../styles";
 /* COMPONENETS */
 import DeleteButton from "./Buttons/DeleteButton";
 
+import { Link } from 'react-router-dom'
+
 function ProductItem(props) {
-    const parts = props.name.split(new RegExp(`(${props.text})`, "gi"));
+    const parts = props.name.split(new RegExp(`(${props.text})`, "gi",));
     return (
         //props from the main data (Gloves.js) and return to the ProductList
         <ProductWrapper key={props.id}>
-            <img
+        <Link to={`/products/${props.slug}`}>
+        <img
                 src={props.image}
                 alt={props.name}
-                onClick={() => props.setGlove(props)}
             />
+        </Link>
+     
             <p>
-                {parts.map((part) =>
-                    part.toLowerCase() === props.text.toLowerCase() ? (
-                        <mark>{part}</mark>
-                    ) : (
-                        part
-                    )
-                )}
+                {parts.map((part) => part.toLowerCase() === props.text.toLowerCase() ? <i>{part}</i> : part)}
             </p>
             <p>
                 Price: <span>{props.price}</span> KD

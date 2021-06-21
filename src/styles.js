@@ -1,6 +1,7 @@
 import styled, {createGlobalStyle} from 'styled-components'
 import moon from './moon.png'
 import sun from './sun.png'
+import { Link, NavLink } from 'react-router-dom'
 
 export const GlobalStyle = createGlobalStyle `
  body{
@@ -12,6 +13,18 @@ export const GlobalStyle = createGlobalStyle `
  }
 
 `
+export const Logo = styled(Link) `
+  img {
+    width: 15%;
+  }
+`;
+export const NavProduct = styled(NavLink) `
+  color: ${props => props.theme.mainColor};
+  text-decoration: none;
+  &.active {
+    color: red;
+  }
+`;
 export const Title = styled.h1 `
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
@@ -70,7 +83,8 @@ export const ProductWrapper = styled.div `
     }
 `
 export const ToggleSwitch = styled.div `
-  margin: 3px 50px 0;
+  float: right;
+  margin: 30px 0;
   .switch{
     position: relative;
     width: 130px;

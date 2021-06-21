@@ -3,21 +3,30 @@ import DeleteButton from "./Buttons/DeleteButton";
 /* Styled-Compnenet */
 import { ProductDetails } from "../styles";
 
+/* Libraries */
+import {useParams, Link, Redirect } from "react-router-dom"
+
 /* Function will show the product Details */
 function ProductDetail(props) {
+    const productSlug = useParams().productSlug
+    
+    const productCheck = props.gloves.find(part => part.slug === productSlug);
+
+
+    if (!productCheck) return <Redirect to="/products" />;
     return (
         <ProductDetails>
-            <img src={props.glove.image} alt={props.glove.name} />
-            <h2>{props.glove.name}</h2>
-            <p>{props.glove.detail}</p>
+            <img src={productCheck.image} alt={productCheck.name} />
+            <h2>{productCheck.name}</h2>
+            <p>{productCheck.detail}</p>
             <p>
-                Price: <span>{props.glove.price}</span> KD
+                Price: <span>{productCheck.price}</span> KD
             </p>
-            <button onClick={() => props.setGlove(false)}>Back</button>
+            <Link to="/products"><button>Back</button></Link>
+            
             <DeleteButton
-                deletGloves={props.glove.deletGloves}
-                gloveID={props.glove.id}
-                setGlove={props.setGlove}
+                deletGloves={props.deletGloves}
+                gloveID={productCheck.id}
             />
         </ProductDetails>
     );

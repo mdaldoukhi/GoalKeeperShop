@@ -30,9 +30,9 @@ function ProductList(props) {
                             name={gloves.name}
                             image={gloves.image}
                             price={gloves.price}
+                            slug={gloves.slug}
                             text={quary}
                             detail={gloves.detail}
-                            setGlove={props.setGlove}
                             deletGloves={props.deletGloves}
                         />
                     ))}
