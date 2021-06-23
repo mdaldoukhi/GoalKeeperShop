@@ -4,7 +4,9 @@ import { ListWrapper, ProductTile, SearchBar } from "../styles";
 import ProductItem from "./ProductItem";
 /* GLOBAL useState */
 import { useState } from "react";
+
 import productStore from '../stores/productStore'
+import {observer} from 'mobx-react'
 
 function ProductList(props) {
     const [quary, setQuary] = useState("");
@@ -42,4 +44,4 @@ function ProductList(props) {
     );
 }
 
-export default ProductList;
+export default observer(ProductList);

@@ -2,7 +2,9 @@
 import DeleteButton from "./Buttons/DeleteButton";
 /* Styled-Compnenet */
 import { ProductDetails } from "../styles";
+
 import productStore from "../stores/productStore";
+import { observer } from "mobx-react";
 
 /* Libraries */
 import {useParams, Link, Redirect } from "react-router-dom"
@@ -33,4 +35,4 @@ function ProductDetail(props) {
     );
 }
 
-export default ProductDetail;
+export default observer(ProductDetail);
