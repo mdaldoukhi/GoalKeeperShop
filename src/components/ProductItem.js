@@ -10,13 +10,13 @@ function ProductItem(props) {
     return (
         //props from the main data (Gloves.js) and return to the ProductList
         <ProductWrapper key={props.id}>
-        <Link to={`/products/${props.slug}`}>
-        <img
-                src={props.image}
-                alt={props.name}
-            />
-        </Link>
-     
+            <Link to={`/products/${props.slug}`}>
+                <img
+                    src={props.image}
+                    alt={props.name}
+                />
+            </Link>
+
             <p>
                 {parts.map((part) => part.toLowerCase() === props.text.toLowerCase() ? <i>{part}</i> : part)}
             </p>
@@ -24,9 +24,7 @@ function ProductItem(props) {
                 Price: <span>{props.price}</span> KD
             </p>
             <DeleteButton
-                deletGloves={props.deletGloves}
                 gloveID={props.id}
-                setGlove={props.setGlove}
             />
         </ProductWrapper>
     );

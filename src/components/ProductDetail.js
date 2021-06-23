@@ -7,12 +7,12 @@ import productStore from "../stores/productStore";
 import { observer } from "mobx-react";
 
 /* Libraries */
-import {useParams, Link, Redirect } from "react-router-dom"
+import { useParams, Link, Redirect } from "react-router-dom"
 
 /* Function will show the product Details */
 function ProductDetail(props) {
     const productSlug = useParams().productSlug
-    
+
     const productCheck = productStore.gloves.find(part => part.slug === productSlug);
 
 
@@ -26,9 +26,8 @@ function ProductDetail(props) {
                 Price: <span>{productCheck.price}</span> KD
             </p>
             <Link to="/products"><button>Back</button></Link>
-            
+
             <DeleteButton
-                deletGloves={props.deletGloves}
                 gloveID={productCheck.id}
             />
         </ProductDetails>

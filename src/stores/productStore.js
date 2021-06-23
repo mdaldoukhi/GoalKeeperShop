@@ -12,4 +12,4 @@ class ProductStore {
       };
 }
 const productStore = new ProductStore() // create instance
-export default productStore;
+export default productStore; // export it 

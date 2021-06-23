@@ -8,7 +8,7 @@ import { useState } from "react";
 import productStore from '../stores/productStore'
 import {observer} from 'mobx-react'
 
-function ProductList(props) {
+function ProductList() {
     const [quary, setQuary] = useState("");
 
     return (
@@ -36,7 +36,7 @@ function ProductList(props) {
                             slug={gloves.slug}
                             text={quary}
                             detail={gloves.detail}
-                            deletGloves={props.deletGloves}
+                            
                         />
                     ))}
             </ListWrapper>
