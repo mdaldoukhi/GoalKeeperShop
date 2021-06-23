@@ -2,6 +2,7 @@
 import DeleteButton from "./Buttons/DeleteButton";
 /* Styled-Compnenet */
 import { ProductDetails } from "../styles";
+import productStore from "../stores/productStore";
 
 /* Libraries */
 import {useParams, Link, Redirect } from "react-router-dom"
@@ -10,7 +11,7 @@ import {useParams, Link, Redirect } from "react-router-dom"
 function ProductDetail(props) {
     const productSlug = useParams().productSlug
     
-    const productCheck = props.gloves.find(part => part.slug === productSlug);
+    const productCheck = productStore.gloves.find(part => part.slug === productSlug);
 
 
     if (!productCheck) return <Redirect to="/products" />;

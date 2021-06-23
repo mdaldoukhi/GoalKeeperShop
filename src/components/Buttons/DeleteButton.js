@@ -1,9 +1,10 @@
 /* STYLED-COMPONENET */
 import { DeleteBtn } from "../../styles";
+import productStore from "../../stores/productStore";
 
 function DeleteButton(props) {
     const handleDelete = () => {
-        props.deletGloves(props.gloveID);
+        productStore.deletGloves(props.gloveID);
     };
     return <DeleteBtn onClick={handleDelete}>Delete</DeleteBtn>;
 }

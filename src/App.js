@@ -5,21 +5,13 @@ import ToggleBtn from "./components/ToggleBtn";
 import Navbar from "./components/Navbar";
 import ProductDetail from "./components/ProductDetail";
 
-
 /* Styled-components */
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../src/styles";
 
-
 /* Global useState */
 import { useState } from "react";
 import { Switch, Route } from 'react-router'
-
-/* Gloves Data */
-import gloves from "./gloves";
-
-
-
 
 /* Theme Coloring */
 const theme = {
@@ -48,13 +40,6 @@ function App() {
       : setCurrentMode("dark");
   };
 
-  /* useState to Delete the product by passing the id  */
-  const [_gloves, setGloves] = useState(gloves);
-  const deletGloves = (gloveID) => {
-    const updateGloves = _gloves.filter((glove) => glove.id !== gloveID);
-    setGloves(updateGloves);
-  };
-
   return (
     <ThemeProvider theme={theme[currentMode]}>
     <Navbar currentMode={currentMode}/>
@@ -64,13 +49,10 @@ function App() {
           <Home />
         </Route>
         <Route  path="/products/:productSlug">
-        <ProductDetail  gloves={_gloves} deletGloves={deletGloves}/>
+        <ProductDetail />
         </Route>
         <Route path="/products">
-        <ProductList
-        gloves={_gloves}
-        deletGloves={deletGloves}
-      />
+        <ProductList/>
         </Route>
       </Switch>
      

@@ -4,6 +4,7 @@ import { ListWrapper, ProductTile, SearchBar } from "../styles";
 import ProductItem from "./ProductItem";
 /* GLOBAL useState */
 import { useState } from "react";
+import productStore from '../stores/productStore'
 
 function ProductList(props) {
     const [quary, setQuary] = useState("");
@@ -18,7 +19,7 @@ function ProductList(props) {
             />
             <ListWrapper>
                 {/* push the data to ProductList file by using Props */}
-                {props.gloves
+                {productStore.gloves
                     .filter(
                         (gloves) =>
                             gloves.name.includes(quary.toLowerCase()) ||
