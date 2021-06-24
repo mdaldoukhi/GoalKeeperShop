@@ -1,5 +1,5 @@
 /* Styled-Componenet */
-import { ListWrapper, ProductTile, SearchBar } from "../styles";
+import { ListWrapper, ProductTile, SearchBar, CreateNew } from "../styles";
 /* Componenet */
 import ProductItem from "./ProductItem";
 /* GLOBAL useState */
@@ -8,9 +8,14 @@ import { useState } from "react";
 import productStore from '../stores/productStore'
 import {observer} from 'mobx-react'
 
+import AddButton from "./Buttons/AddButton";
+
+
 function ProductList() {
     const [quary, setQuary] = useState("");
-
+    const [isOpen, setIsOpen] = useState(false)
+    const openModal = () => {setIsOpen(true)};
+    const closeModal = () => {setIsOpen(false)}
     return (
         <div>
             {/* Header of the Product */}
@@ -19,6 +24,8 @@ function ProductList() {
                 placeholder="Search for your Gloves Brand"
                 onChange={(event) => setQuary(event.target.value)}
             />
+            <CreateNew onClick={openModal}/>
+           <AddButton isOpen={isOpen} closeModal={closeModal}/>
             <ListWrapper>
                 {/* push the data to ProductList file by using Props */}
                 {productStore.gloves
@@ -40,6 +47,7 @@ function ProductList() {
                         />
                     ))}
             </ListWrapper>
+
         </div>
     );
 }

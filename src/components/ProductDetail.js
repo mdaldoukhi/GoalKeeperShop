@@ -10,7 +10,7 @@ import { observer } from "mobx-react";
 import { useParams, Link, Redirect } from "react-router-dom"
 
 /* Function will show the product Details */
-function ProductDetail(props) {
+function ProductDetail() {
     const productSlug = useParams().productSlug
 
     const productCheck = productStore.gloves.find(part => part.slug === productSlug);
