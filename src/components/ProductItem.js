@@ -2,8 +2,11 @@
 import { ProductWrapper } from "../styles";
 /* COMPONENETS */
 import DeleteButton from "./Buttons/DeleteButton";
+import UpdateButton from '../components/Buttons/UpdateButton'
 
 import { Link } from 'react-router-dom'
+import {observer} from 'mobx-react'
+
 
 function ProductItem(props) {
     const parts = props.name.split(new RegExp(`(${props.text})`, "gi",));
@@ -23,6 +26,7 @@ function ProductItem(props) {
             <p>
                 Price: <span>{props.price}</span> KD
             </p>
+            <UpdateButton glove={props.glove}/>
             <DeleteButton
                 gloveID={props.id}
             />
@@ -30,4 +34,4 @@ function ProductItem(props) {
     );
 }
 
-export default ProductItem;
+export default observer(ProductItem);

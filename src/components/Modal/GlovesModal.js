@@ -3,21 +3,21 @@ import Modal from "react-modal";
 import productStore from "../../stores/productStore";
 
 const AddButton = (props) => {
-    const [gloves, setGloves] = useState({
+    const [gloves, setGloves] = useState(props.oldGlove ? props.oldGlove : {
         name: "",
         price: 0,
         detail: "",
         image: "",
     });
-
     const handleChange = (event) => {
         setGloves({ ...gloves, [event.target.name]: event.target.value });
         console.log(gloves)
     };
     const handleSubmit = (event) => {
         event.preventDefault();
+        if(props.oldGlove)productStore.updateItem(gloves)
+        else productStore.createNew(gloves)
         props.closeModal()
-        productStore.createNew(gloves)
     }
     return (
         <div>
@@ -35,6 +35,7 @@ const AddButton = (props) => {
                             placeholder="Type the Gloves Name"
                             onChange={handleChange}
                             name="name"
+                            value={gloves.name}
                         />
                     </div>
                     <div className="col-md-6">
@@ -48,6 +49,8 @@ const AddButton = (props) => {
                             placeholder="Accepted only real number"
                             onChange={handleChange}
                             name="price"
+                            value={gloves.price}
+
                         />
                     </div>
                     <div className="col-md-12">
@@ -60,6 +63,8 @@ const AddButton = (props) => {
                             placeholder="Type the Descripe of Gloves ..."
                             onChange={handleChange}
                             name="detail"
+                            value={gloves.detail}
+
                         />
                     </div>
                     <div className="col-md-12">
@@ -72,9 +77,10 @@ const AddButton = (props) => {
                             placeholder="Type URL address ... "
                             onChange={handleChange}
                             name="image"
+                            value={gloves.image}
                         />
                     </div>
-                    <button type="submit" class="btn btn-outline-dark col-md-3 mx-auto">Add New Gloves</button>
+                    <button type="submit" class="btn btn-outline-dark col-md-3 mx-auto">{props.oldGlove ? "Update" : "Add"}</button>
                 </form>
             </Modal>
         </div>

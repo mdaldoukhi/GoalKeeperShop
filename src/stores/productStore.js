@@ -18,6 +18,14 @@ class ProductStore {
         newGloves.slug = slugify(newGloves.name);
         this.gloves.push(newGloves)
     }
+    updateItem = (updateItem) => {
+        const glove = this.gloves.find((cookie) => cookie.id === updateItem.id);
+        glove.name = updateItem.name;
+        glove.price = updateItem.price;
+        glove.description = updateItem.description;
+        glove.image = updateItem.image;
+        glove.slug = slugify(updateItem.name);
+      };
 }
 const productStore = new ProductStore() // create instance
 export default productStore; // export it 

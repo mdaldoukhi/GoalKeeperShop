@@ -3,7 +3,8 @@ import moon from './moon.png'
 import sun from './sun.png'
 import { Link, NavLink } from 'react-router-dom';
 
-import { AiFillPlusCircle } from 'react-icons/ai';
+import { AiFillPlusCircle, AiFillEdit } from 'react-icons/ai';
+
 
 export const GlobalStyle = createGlobalStyle `
  body{
@@ -342,7 +343,20 @@ export const DeleteBtn = styled.p `
     box-shadow: 0 0 10px 0 #dc3545 inset, 0 0 10px 4px #dc3545;
   }
 `;
-
+export const UpdateBtn = styled(AiFillEdit) `
+  font-size: 2em;
+  display: block;
+  margin: 5px auto;
+  color: #000;
+`;
+/* Clear Border */
+export const Modify = styled.section `
+  div {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+`;
 export const CreateNew = styled(AiFillPlusCircle) `
   margin: 0 90%;
   font-size: 2em;

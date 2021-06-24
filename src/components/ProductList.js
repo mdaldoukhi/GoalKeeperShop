@@ -8,7 +8,7 @@ import { useState } from "react";
 import productStore from '../stores/productStore'
 import {observer} from 'mobx-react'
 
-import AddButton from "./Buttons/AddButton";
+import AddButton from "./Modal/GlovesModal";
 
 
 function ProductList() {
@@ -43,7 +43,7 @@ function ProductList() {
                             slug={gloves.slug}
                             text={quary}
                             detail={gloves.detail}
-                            
+                            glove={gloves}
                         />
                     ))}
             </ListWrapper>
