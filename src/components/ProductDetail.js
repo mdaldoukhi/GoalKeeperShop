@@ -1,7 +1,7 @@
 /* Compnenets */
 import DeleteButton from "./Buttons/DeleteButton";
 /* Styled-Compnenet */
-import { ProductDetails } from "../styles";
+import { ProductDetails, TopDetails, BackBtn, LeftDetail, RightDetail } from "../styles";
 
 import productStore from "../stores/productStore";
 import { observer } from "mobx-react";
@@ -19,17 +19,26 @@ function ProductDetail() {
     if (!productCheck) return <Redirect to="/products" />;
     return (
         <ProductDetails>
-            <img src={productCheck.image} alt={productCheck.name} />
-            <h2>{productCheck.name}</h2>
-            <p>{productCheck.detail}</p>
-            <p>
-                Price: <span>{productCheck.price}</span> KD
-            </p>
-            <Link to="/products"><button>Back</button></Link>
+            <TopDetails>
+                <Link to="/products"><BackBtn></BackBtn></Link>
+                <DeleteButton
+                    gloveID={productCheck.id}
+                />
+            </TopDetails>
+            <LeftDetail>
+                <img src={productCheck.image} alt={productCheck.name} />
+            </LeftDetail>
+            <RightDetail>
+                <h2>{productCheck.name}</h2>
+                <p>
+                    Price: <span>{productCheck.price}</span> KD
+                </p>
+                <p>{productCheck.detail}</p>
 
-            <DeleteButton
-                gloveID={productCheck.id}
-            />
+            </RightDetail>
+
+
+
         </ProductDetails>
     );
 }

@@ -23,9 +23,9 @@ const theme = {
     titleColor: '#0071BC'
   },
   dark: {
-    mainColor: "#90A4AE",
-    backgroundColor: "#222",
-    borderColor: "#fff",
+    mainColor: "#fff",
+    backgroundColor: "#0f0f0f",
+    borderColor: "#575757",
     red: "red",
     titleColor: '#ECEFF1'
   },

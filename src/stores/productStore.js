@@ -1,16 +1,30 @@
-import gloves from "../gloves";
 import {makeAutoObservable} from 'mobx';
 import slugify from 'react-slugify';
+import axios from "axios"
 
 class ProductStore {
-    gloves = gloves;
+    /* Receive data array from the backend */
+    gloves = [];
     constructor(){
         makeAutoObservable(this)
     }
+    fetchGloves = async () => {
+        try {
+          const response = await axios.get("http://localhost:8000/gloves");
+          this.gloves = response.data;
+        } catch (error) {
+          console.error("fetchGloves: ", error);
+        }
+      };
 
-    deletGloves = (gloveID) => {
-        const updateGloves = this.gloves.filter((glove) => glove.id !== gloveID);
-        this.gloves = updateGloves;
+    deletGloves = async (gloveID) => {
+        try {
+            await axios.delete(`http://localhost:8000/gloves/${gloveID}`);
+            const updateGloves = this.gloves.filter((glove) => glove.id !== gloveID);
+            this.gloves = updateGloves;
+        } catch (error) {
+            console.error(error)
+        }
       };
     
     createNew = (newGloves) => {
@@ -28,4 +42,5 @@ class ProductStore {
       };
 }
 const productStore = new ProductStore() // create instance
+productStore.fetchGloves();
 export default productStore; // export it 

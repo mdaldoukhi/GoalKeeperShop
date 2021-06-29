@@ -31,7 +31,7 @@ function ProductList() {
                 {productStore.gloves
                     .filter(
                         (gloves) =>
-                            gloves.name.includes(quary.toLowerCase()) ||
+                            gloves.name.toLowerCase().includes(quary.toLowerCase()) ||
                             gloves.price === parseInt(quary)
                     )
                     .map((gloves) => (

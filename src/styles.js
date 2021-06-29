@@ -1,12 +1,14 @@
-import styled, {createGlobalStyle} from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import moon from './moon.png'
 import sun from './sun.png'
 import { Link, NavLink } from 'react-router-dom';
 
-import { AiFillPlusCircle, AiFillEdit } from 'react-icons/ai';
+import { AiFillPlusCircle, AiOutlineDelete } from 'react-icons/ai';
+import {  FiEdit } from 'react-icons/fi';
+import {  MdArrowBack } from 'react-icons/md';
 
 
-export const GlobalStyle = createGlobalStyle `
+export const GlobalStyle = createGlobalStyle`
  body{
      color: ${props => props.theme.mainColor};
      background-color: ${props => props.theme.backgroundColor};
@@ -15,26 +17,43 @@ export const GlobalStyle = createGlobalStyle `
      }
  }
 
-`
-export const Logo = styled(Link) `
-  img {
-    width: 15%;
+`;
+/* Start NavBar Section  */
+export const NavBar = styled.nav`
+  border-bottom: 1px solid ${props => props.theme.borderColor};
+  background-color: ${props => props.theme.backgroundColor};
+  margin-bottom: 10px; 
+  font-family: "arial";
+  ul {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
   }
 `;
-export const NavProduct = styled(NavLink) `
+export const Logo = styled(Link)`
+  width: 5%;
+  img {
+    width: 100%;
+  }
+`;
+export const NavProduct = styled(NavLink)`
   color: ${props => props.theme.mainColor};
   text-decoration: none;
+  :hover {
+    color: #71d1df
+  }
   &.active {
-    color: red;
+    color: #71d1df;
   }
 `;
-export const Title = styled.h1 `
+export const Title = styled.h1`
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   color: ${props => props.theme.titleColor};
   text-transform: uppercase;
 `
-export const Description = styled.h4 `
+export const Description = styled.h4`
   width: 80%;
   margin: 15px auto;
   line-height: 1.5;
@@ -42,50 +61,121 @@ export const Description = styled.h4 `
   color: ${props => props.theme.mainColor};
   font-size: 18px;
 `
-export const ShopImage = styled.img `
+export const ShopImage = styled.img`
   width: 100%;
   display: block;
   margin: 0 auto;
 `
-export const ProductTile = styled.h1 `
+export const ProductTile = styled.h1`
     color: ${props => props.theme.mainColor};
-    margin: 30px 100px;
+    text-align: center;
   text-transform: uppercase;
 `
-export const ListWrapper = styled.div `
+export const ListWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
   width: 80%;
   margin: 0 auto;
-  div {
+`;
+export const SearchBar = styled.input`  
+        width: 80%;
+        margin: 0px 10%;
+        padding: 12px 24px;
+        background-color: transparent;
+        transition: transform 250ms ease-in-out;
+        font-size: 14px;
+        line-height: 18px;
+        color: #575756;
+        background-color: transparent;
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 95% center;
+        border-radius: 50px;
+        border: 1px solid #575756;
+        transition: all 250ms ease-in-out;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        ::placeholder {
+            color: color(#575756 a(0.8));
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        :hover,
+        :focus {
+            padding: 12px 0;
+            outline: 0;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #575756;
+            border-radius: 0;
+            background-position: 100% center;
+        }
+`
+/* Start Product Section */
+export const ProductWrapper = styled.div`
     border: 1px solid #000;
     margin: 20px;
-    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 5px #000;
     text-align: center;
     width: 25%;
     background-color: #fff;
-  }
-`
-export const ProductWrapper = styled.div `
+  overflow: hidden;
     img {
+      padding: 15px;
         width: 75%;
     }
-    p {
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        font-size: 18px;
-        color: #235eb6;
-        span {
-            color: #bc4749;
-            font-weight: bold;
-            font-size: 25px;
-        }
-    }
-`
-export const ToggleSwitch = styled.div `
+`;
+export const ProductTitle = styled.p`
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  color: #235eb6;
+  min-height: 60px;
+  margin: 20px 0 15px;
+`;
+export const ProductPrice = styled.p`
+  color: #235eb6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 45%;
+  margin: 15px auto;
+  font-size: px;
+  span {
+    color: #bc4749;
+    font-weight: bold;
+    font-size: 25px;
+  }
+`;
+export const ProductFooter = styled.div `
+  display: flex;
+  justify-content: center;
+  background-color: #71d1df;
+  padding: 5px;
+  font-size: 1.5em;
+`;
+export const DeleteBtn = styled(AiOutlineDelete)`
+  display: block;
+  color: red;
+  cursor: pointer;
+  :hover {
+    color: #fff
+  }
+`;
+export const UpdateBtn = styled(FiEdit)`
+  display: block;
+  color: #000;
+  margin-right: 25px;
+  cursor: pointer;
+  :hover {
+    color: #fff
+  }
+`;
+/* End Product Section */
+
+export const ToggleSwitch = styled.div`
   float: right;
   margin: 30px 0;
   .switch{
@@ -240,7 +330,7 @@ export const ToggleSwitch = styled.div `
     }
   }
 `
-export const Toggle = styled.button `
+export const Toggle = styled.button`
   padding: 5px 15px;
   margin: 15px;
   font-size: 18px;
@@ -248,117 +338,64 @@ export const Toggle = styled.button `
   color: ${props => props.theme.backgroundColor};
   border-radius: 10px;
 `
-export const SearchBar = styled.input `  
-        width: 80%;
-        margin: 0px 10%;
-        padding: 12px 24px;
-        background-color: transparent;
-        transition: transform 250ms ease-in-out;
-        font-size: 14px;
-        line-height: 18px;
-        color: #575756;
-        background-color: transparent;
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-size: 18px 18px;
-        background-position: 95% center;
-        border-radius: 50px;
-        border: 1px solid #575756;
-        transition: all 250ms ease-in-out;
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
-        ::placeholder {
-            color: color(#575756 a(0.8));
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        :hover,
-        :focus {
-            padding: 12px 0;
-            outline: 0;
-            border: 1px solid transparent;
-            border-bottom: 1px solid #575756;
-            border-radius: 0;
-            background-position: 100% center;
-        }
-`
-export const ProductDetails = styled.div `
-  margin: 30px auto;
-  width: 80%;
-  border-radius:7px;
-  overflow: hidden;
-  img {
-    width: 40%;
-    float: left;
-    margin-right: 20px;
+export const TopDetails = styled.div `
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  border-bottom: 1px solid ${props => props.theme.borderColor};
+  padding: 10px 0;
+  width: 100%;
+`;
+export const BackBtn = styled(MdArrowBack) `
+  color: yellow;
+  :hover {
+    color: ${props => props.theme.mainColor}
   }
-  h2 {
+`;
+export const LeftDetail = styled.div `
+  width: 40%;
+  border-right: 1px solid ${props => props.theme.borderColor};
+  img {
+    width: 100%;
+  }
+`;
+export const RightDetail = styled.div `
+width: 60%;
+h2 {
+    text-transform: uppercase;
     text-align: center;
-    color: #fff
+    margin: 15px
   }
   p {
+    margin: 30px;
     vertical-align: middle;
-    line-height: 1.7;
-  }
-  button {
-  background-color: transparent;
-  border-radius: 5px;
-  font-weight: bold;
-  padding: 5px 15px ;
-  border: none;
-  cursor: pointer;
-  align-self: center;
-  font-size: 15px;
-  margin: 20px;
-  text-align: center;
-  text-transform: uppercase;
-  border-color: #3498db;
-  color:  ${props => props.theme.borderColor};
-  box-shadow: 0 0 40px 40px #ffc107 inset, 0 0 0 0 #ffc107;
-  transition: all 150ms ease-in-out;
-  :hover {
-    box-shadow: 0 0 10px 0 #ffc107 inset, 0 0 10px 4px #ffc107;
-  }
-}
-`;
-export const DeleteBtn = styled.p `
-  color: ${props => props.theme.borderColor} !important;
-  cursor: pointer;
-  font-weight: bold;
-  width: fit-content;
-  display: inline-block;
-  background-color: transparent;
-  border-radius: 5px;
-  padding: 3px 15px;
-  border: none;
-  cursor: pointer;
-  align-self: center;
-  font-size: 14px !important;
-  text-align: center;
-  text-transform: uppercase;
-  border-color: #3498db;
-  box-shadow: 0 0 40px 40px #dc3545 inset, 0 0 0 0 #dc3545;
-  transition: all 150ms ease-in-out;
-  :hover {
-    box-shadow: 0 0 10px 0 #dc3545 inset, 0 0 10px 4px #dc3545;
+    line-height: 2;
   }
 `;
-export const UpdateBtn = styled(AiFillEdit) `
-  font-size: 2em;
-  display: block;
-  margin: 5px auto;
-  color: #000;
+export const ProductDetails = styled.div`
+  width: 50%;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 `;
+
 /* Clear Border */
-export const Modify = styled.section `
+export const Modify = styled.section`
   div {
     border: none;
     box-shadow: none;
     padding: 0;
   }
 `;
-export const CreateNew = styled(AiFillPlusCircle) `
+export const CreateNew = styled(AiFillPlusCircle)`
   margin: 0 90%;
   font-size: 2em;
   color: ${props => props.theme.mainColor};
+`;
+export const HighLighted = styled.span`
+  background-color: red;
+  color: white !important;
+  font-size: 19px !important;
 `;
