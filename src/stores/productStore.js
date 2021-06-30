@@ -36,13 +36,19 @@ class ProductStore {
       console.error(error) // error message 
     }
   }
-  updateItem = (updateItem) => {
-    const glove = this.gloves.find((cookie) => cookie.id === updateItem.id);
-    glove.name = updateItem.name;
-    glove.price = updateItem.price;
-    glove.description = updateItem.description;
-    glove.image = updateItem.image;
-    glove.slug = slugify(updateItem.name);
+  updateItem = async (updateItem) => {
+
+    try {
+      await axios.put(`http://localhost:8000/gloves/${updateItem.id}`, updateItem)
+      const glove = this.gloves.find((cookie) => cookie.id === updateItem.id);
+      glove.name = updateItem.name;
+      glove.price = updateItem.price;
+      glove.description = updateItem.description;
+      glove.image = updateItem.image;
+      glove.slug = slugify(updateItem.name);
+    } catch (error) {
+      console.error(error)
+    }
   };
 }
 const productStore = new ProductStore() // create instance
