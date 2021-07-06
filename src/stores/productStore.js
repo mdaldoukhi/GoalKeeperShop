@@ -1,5 +1,4 @@
 import { makeAutoObservable } from 'mobx';
-import slugify from 'react-slugify';
 import axios from "axios"
 
 class ProductStore {
@@ -30,7 +29,9 @@ class ProductStore {
   /* Add new Product on the list */
   createNew = async (newGloves) => {
     try {
-      const response = await axios.post("http://localhost:8000/gloves", newGloves)
+      const formData = new FormData();
+      for (const key in newGloves) formData.append(key, newGloves[key])
+      const response = await axios.post("http://localhost:8000/gloves", formData)
       this.gloves.push(response.data); // push the data from resonse to API
     } catch (error) {
       console.error(error) // error message 
@@ -39,13 +40,11 @@ class ProductStore {
   updateItem = async (updateItem) => {
 
     try {
-      await axios.put(`http://localhost:8000/gloves/${updateItem.id}`, updateItem)
-      const glove = this.gloves.find((cookie) => cookie.id === updateItem.id);
-      glove.name = updateItem.name;
-      glove.price = updateItem.price;
-      glove.description = updateItem.description;
-      glove.image = updateItem.image;
-      glove.slug = slugify(updateItem.name);
+      const formData = new FormData();
+      for (const key in updateItem) formData.append(key, updateItem[key])
+      const res = await axios.put(`http://localhost:8000/gloves/${updateItem.id}`, formData)
+      const glove = this.gloves.find((cookie) => cookie.id === res.data.id);
+      for (const key in glove) glove[key] = res.data[key]
     } catch (error) {
       console.error(error)
     }

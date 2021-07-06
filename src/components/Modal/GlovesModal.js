@@ -11,7 +11,9 @@ const AddButton = (props) => {
     });
     const handleChange = (event) => {
         setGloves({ ...gloves, [event.target.name]: event.target.value });
-        console.log(gloves)
+    };
+    const handleImage = (event) => {
+        setGloves({ ...gloves, image: event.target.files[0] });
     };
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -72,12 +74,11 @@ const AddButton = (props) => {
                             Image
                         </label>
                         <input
-                            type="text"
+                            type="file"
                             className="form-control"
                             placeholder="Type URL address ... "
-                            onChange={handleChange}
+                            onChange={handleImage}
                             name="image"
-                            value={gloves.image}
                         />
                     </div>
                     <button type="submit" class="btn btn-outline-dark col-md-3 mx-auto">{props.oldGlove ? "Update" : "Add"}</button>
