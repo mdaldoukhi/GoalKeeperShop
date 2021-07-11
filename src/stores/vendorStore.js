@@ -3,6 +3,7 @@ import axios from "axios"
 
 class VendorStore {
     vendors = [];
+    loading = true;
     constructor() {
         makeAutoObservable(this)
     }
@@ -10,6 +11,7 @@ class VendorStore {
         try {
           const response = await axios.get("http://localhost:8000/shops");
           this.vendors = response.data;
+          this.loading = false
         } catch (error) {
           console.error("fetchVendors: ", error);
         }
@@ -19,6 +21,7 @@ class VendorStore {
           const formData = new FormData();
           for (const key in newVendors) formData.append(key, newVendors[key])
           const response = await axios.post("http://localhost:8000/shops", formData)
+          response.data.gloves = [];
           this.vendors.push(response.data); // push the data from resonse to API
         } catch (error) {
           console.error(error) // error message 

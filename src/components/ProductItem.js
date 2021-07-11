@@ -9,14 +9,14 @@ import { observer } from 'mobx-react'
 
 
 function ProductItem(props) {
-    const parts = props.name.split((new RegExp(`(${props.text})`, 'gi')));
+    const parts = props.glove.name.split((new RegExp(`(${props.text})`, 'gi')));
     return (
         //props from the main data (Gloves.js) and return to the ProductList
-        <ProductWrapper key={props.id}>
-            <Link to={`/products/${props.slug}`}>
+        <ProductWrapper key={props.glove.id}>
+            <Link to={`/products/${props.glove.slug}`}>
                 <img
-                    src={props.image}
-                    alt={props.name}
+                    src={props.glove.image}
+                    alt={props.glove.name}
                 />
             </Link>
 
@@ -24,12 +24,12 @@ function ProductItem(props) {
                 {parts.map((part) => props.text.toLowerCase() === part.toLowerCase() ? <HighLighted>{part}</HighLighted> : part)}
             </ProductTitle>
             <ProductPrice>
-                PRICE: <span>{props.price}</span> KD
+                PRICE: <span>{props.glove.price}</span> KD
             </ProductPrice>
             <ProductFooter>
                 <UpdateButton glove={props.glove} />
                 <DeleteButton
-                    gloveID={props.id}
+                    gloveID={props.glove.id}
                 />
             </ProductFooter>
         </ProductWrapper>

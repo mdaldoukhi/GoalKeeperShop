@@ -26,7 +26,6 @@ const Signup = (props) => {
         firstName: "",
         lastName: "",
     });
-    const [password, setPassword] = useState("");
 
     const [isRevealPwd, setIsRevealPwd] = useState(false)
     const handleChange = (event) => {

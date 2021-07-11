@@ -5,17 +5,22 @@ import ProductItem from "./ProductItem";
 /* GLOBAL useState */
 import { useState } from "react";
 
-import productStore from '../stores/productStore'
-import {observer} from 'mobx-react'
+import { observer } from 'mobx-react'
 
 import AddButton from "./Modal/GlovesModal";
 
 
-function ProductList() {
+function ProductList({ products, vendor }) {
     const [quary, setQuary] = useState("");
     const [isOpen, setIsOpen] = useState(false)
-    const openModal = () => {setIsOpen(true)};
-    const closeModal = () => {setIsOpen(false)}
+
+    const openModal = () => { setIsOpen(true) };
+    const closeModal = () => { setIsOpen(false) }
+
+    const productList = products
+        .filter((glove) => glove?.name.toLowerCase().includes(quary.toLowerCase()) || glove?.price === parseInt(quary))
+        .map((glove) => <ProductItem glove={glove} text={quary} />);
+
     return (
         <div>
             {/* Header of the Product */}
@@ -24,28 +29,11 @@ function ProductList() {
                 placeholder="Search for your Gloves Brand"
                 onChange={(event) => setQuary(event.target.value)}
             />
-            <CreateNew onClick={openModal}/>
-           <AddButton isOpen={isOpen} closeModal={closeModal}/>
+            <CreateNew onClick={openModal} />
+            <AddButton isOpen={isOpen} closeModal={closeModal} vendor={vendor}/>
             <ListWrapper>
                 {/* push the data to ProductList file by using Props */}
-                {productStore.gloves
-                    .filter(
-                        (gloves) =>
-                            gloves.name.toLowerCase().includes(quary.toLowerCase()) ||
-                            gloves.price === parseInt(quary)
-                    )
-                    .map((gloves) => (
-                        <ProductItem
-                            id={gloves.id}
-                            name={gloves.name}
-                            image={gloves.image}
-                            price={gloves.price}
-                            slug={gloves.slug}
-                            text={quary}
-                            detail={gloves.detail}
-                            glove={gloves}
-                        />
-                    ))}
+                {productList}
             </ListWrapper>
 
         </div>

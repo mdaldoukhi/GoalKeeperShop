@@ -1,5 +1,5 @@
 /* Styled-Componenet */
-import { ListWrapper, ProductTile, SearchBar, CreateNew } from "../styles";
+import { CreateNew, ProductTile, SearchBar } from "../styles";
 /* Componenet */
 import VendorItem from "./VendorItem";
 
@@ -8,11 +8,20 @@ import { useState } from "react";
 
 import vendorStore from '../stores/vendorStore'
 import { observer } from 'mobx-react'
+import VendorModal from "./Modal/VendorModal";
 
 
 
 function VendorList() {
-    const [quary, setQuary] = useState("");
+    const [query, setQuery] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
+
+    const vendorsList = vendorStore.vendors
+        .filter((shop) => shop.name.toLowerCase().includes(query.toLowerCase()))
+        .map((shop) => <VendorItem shops={shop}  text={query} />);
 
     return (
         <div>
@@ -20,22 +29,13 @@ function VendorList() {
             <ProductTile>Vendors</ProductTile>
             <SearchBar
                 placeholder="Search for your Gloves Brand"
-                onChange={(event) => setQuary(event.target.value)}
+                onChange={(event) => setQuery(event.target.value)}
             />
+            <CreateNew onClick={openModal} />
+            <VendorModal isOpen={isOpen} closeModal={closeModal} />
             <div>
                 {/* push the data to ProductList file by using Props */}
-                {vendorStore.vendors
-                    .filter(
-                        (shops) =>
-                            shops.name.toLowerCase().includes(quary.toLowerCase()) ||
-                            shops.price === parseInt(quary)
-                    )
-                    .map((shops) => (
-                        <VendorItem
-                            shops={shops}
-                            text={quary}
-                        />
-                    ))}
+                {vendorsList}
             </div>
 
         </div>

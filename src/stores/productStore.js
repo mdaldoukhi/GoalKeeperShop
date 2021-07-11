@@ -4,6 +4,7 @@ import axios from "axios"
 class ProductStore {
   /* Receive data array from the backend */
   gloves = [];
+  loading = true;
   constructor() {
     makeAutoObservable(this)
   }
@@ -12,6 +13,7 @@ class ProductStore {
     try {
       const response = await axios.get("http://localhost:8000/gloves");
       this.gloves = response.data;
+      this.loading = false
     } catch (error) {
       console.error("fetchGloves: ", error);
     }
@@ -33,6 +35,7 @@ class ProductStore {
       for (const key in newGloves) formData.append(key, newGloves[key])
       const response = await axios.post(`http://localhost:8000/shops/${vendor.id}/gloves`, formData)
       this.gloves.push(response.data); // push the data from resonse to API
+      console.log(this.gloves)
       vendor.gloves.push({ id: response.data.id })
     } catch (error) {
       console.error(error) // error message 
@@ -49,9 +52,8 @@ class ProductStore {
       console.error(error)
     }
   };
-  getProductById = (gloveId) => {
-    this.gloves.find((glove) => glove.id === gloveId);
-  }
+  getProductById = (gloveId) => this.gloves.find((glove) => glove.id === gloveId);
+
 }
 const productStore = new ProductStore() // create instance
 productStore.fetchGloves();

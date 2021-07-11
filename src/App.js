@@ -12,8 +12,11 @@ import { GlobalStyle } from "../src/styles";
 /* Global useState */
 import { useState } from "react";
 import { Switch, Route } from 'react-router'
+import { observer } from 'mobx-react'
+
 
 import productStore from "./stores/productStore";
+import vendorStore from "./stores/vendorStore";
 
 import VendorList from "./components/VendorList";
 import VendorDetail from "./components/VendorDetail";
@@ -50,26 +53,28 @@ function App() {
     <ThemeProvider theme={theme[currentMode]}>
       <Navbar currentMode={currentMode} />
       <GlobalStyle />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-        <Route path="/products/:productSlug">
-          <ProductDetail />
-        </Route>
-        <Route path="/products">
-          <ProductList products={productStore.gloves}/>
-        </Route>
-        <Route path="/vendors/:vendorSlug">
-          <VendorDetail />
-        </Route>
-        <Route path="/vendors">
-          <VendorList />
-        </Route>
-      </Switch>
+      {vendorStore.loading || productStore.loading ? <h1>Loading</h1> :
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/products/:productSlug">
+            <ProductDetail />
+          </Route>
+          <Route path="/products">
+            <ProductList products={productStore.gloves} />
+          </Route>
+          <Route path="/vendors/:vendorSlug">
+            <VendorDetail />
+          </Route>
+          <Route path="/vendors">
+            <VendorList />
+          </Route>
+        </Switch>
+      }
 
       {/* Call Home File Contain (title, description, shop image)*/}
       {/* Call function of product details or show all product */}
@@ -78,4 +83,4 @@ function App() {
     </ThemeProvider>
   );
 }
-export default App;
+export default observer(App);
