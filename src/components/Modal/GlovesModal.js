@@ -18,7 +18,7 @@ const AddButton = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if(props.oldGlove)productStore.updateItem(gloves)
-        else productStore.createNew(gloves)
+        else productStore.createNew(gloves, props.vendor)
         props.closeModal()
     }
     return (

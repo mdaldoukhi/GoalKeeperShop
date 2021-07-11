@@ -4,6 +4,8 @@ import { NavBar, Logo, NavProduct } from '../styles'
 import DarkLogo from '../DarkLogo.png'
 import LightLogo from '../LightLogo.png'
 
+import SignupBtn from "../components/Buttons/SignupBtn"
+
 const Navbar = (props) => {
   return (
     <NavBar className="navbar navbar-expand-lg">
@@ -19,19 +21,12 @@ const Navbar = (props) => {
               </NavProduct>
             </li>
             <li className="nav-item">
-              <NavProduct to="/Brands" className="nav-link">
-                BRANDS
+              <NavProduct to="/vendors" className="nav-link">
+                Vendors
               </NavProduct>
             </li>
             <li className="nav-item">
-              <NavProduct to="/portfolio" className="nav-link">
-                PORTFOLIO
-              </NavProduct>
-            </li>
-            <li className="nav-item">
-              <NavProduct to="/contact" className="nav-link">
-                CONTACT US
-              </NavProduct>
+              <SignupBtn />
             </li>
           </ul>
         </div>

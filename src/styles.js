@@ -399,3 +399,11 @@ export const HighLighted = styled.span`
   color: white !important;
   font-size: 19px !important;
 `;
+export const PasswordSec = styled.div `
+  position: relative;
+`;
+export const PostionPass = styled.span `
+  position: absolute;
+  top: 2px;
+  right: 5px;
+`;

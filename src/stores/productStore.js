@@ -27,18 +27,18 @@ class ProductStore {
     }
   };
   /* Add new Product on the list */
-  createNew = async (newGloves) => {
+  createNew = async (newGloves, vendor) => {
     try {
       const formData = new FormData();
       for (const key in newGloves) formData.append(key, newGloves[key])
-      const response = await axios.post("http://localhost:8000/gloves", formData)
+      const response = await axios.post(`http://localhost:8000/shops/${vendor.id}/gloves`, formData)
       this.gloves.push(response.data); // push the data from resonse to API
+      vendor.gloves.push({ id: response.data.id })
     } catch (error) {
       console.error(error) // error message 
     }
   }
   updateItem = async (updateItem) => {
-
     try {
       const formData = new FormData();
       for (const key in updateItem) formData.append(key, updateItem[key])
@@ -49,6 +49,9 @@ class ProductStore {
       console.error(error)
     }
   };
+  getProductById = (gloveId) => {
+    this.gloves.find((glove) => glove.id === gloveId);
+  }
 }
 const productStore = new ProductStore() // create instance
 productStore.fetchGloves();

@@ -13,6 +13,12 @@ import { GlobalStyle } from "../src/styles";
 import { useState } from "react";
 import { Switch, Route } from 'react-router'
 
+import productStore from "./stores/productStore";
+
+import VendorList from "./components/VendorList";
+import VendorDetail from "./components/VendorDetail";
+import Signup from "./components/Signup"
+
 /* Theme Coloring */
 const theme = {
   light: {
@@ -42,20 +48,29 @@ function App() {
 
   return (
     <ThemeProvider theme={theme[currentMode]}>
-    <Navbar currentMode={currentMode}/>
-     <GlobalStyle />
+      <Navbar currentMode={currentMode} />
+      <GlobalStyle />
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route  path="/products/:productSlug">
-        <ProductDetail />
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/products/:productSlug">
+          <ProductDetail />
         </Route>
         <Route path="/products">
-        <ProductList/>
+          <ProductList products={productStore.gloves}/>
+        </Route>
+        <Route path="/vendors/:vendorSlug">
+          <VendorDetail />
+        </Route>
+        <Route path="/vendors">
+          <VendorList />
         </Route>
       </Switch>
-     
+
       {/* Call Home File Contain (title, description, shop image)*/}
       {/* Call function of product details or show all product */}
       {/* {setView()} */}
