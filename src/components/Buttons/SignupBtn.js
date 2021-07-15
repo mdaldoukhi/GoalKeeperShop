@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Signup from '../Signup'
-const UpdateButton = () => {
+const SignupBtn = () => {
     const [isOpen, setIsOpen] = useState(false)
     const openModal = () => {setIsOpen(true)};
     const closeModal = () => {setIsOpen(false)}
@@ -11,4 +11,4 @@ const UpdateButton = () => {
         </div>
     )
 }
-export default UpdateButton;
+export default SignupBtn;

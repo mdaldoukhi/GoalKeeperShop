@@ -1,10 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavBar, Logo, NavProduct } from '../styles'
+import { NavBar, Logo, NavProduct, SignoutButton } from '../styles'
 /* Images */
 import DarkLogo from '../DarkLogo.png'
 import LightLogo from '../LightLogo.png'
 
 import SignupBtn from "../components/Buttons/SignupBtn"
+import SigninBtn from "./Buttons/SigninBtn";
+
+import authStore from "../stores/authStore"
+import { observer } from 'mobx-react'
 
 const Navbar = (props) => {
   return (
@@ -25,9 +29,17 @@ const Navbar = (props) => {
                 Vendors
               </NavProduct>
             </li>
-            <li className="nav-item">
-              <SignupBtn />
-            </li>
+            {authStore.user ? <h4>{authStore.user.username} <SignoutButton onClick={authStore.signout} /> </h4> :
+              <>
+                <li className="nav-item">
+                  <SignupBtn />
+                </li>
+                <li className="nav-item">
+                  <SigninBtn />
+                </li>
+              </>
+            }
+
           </ul>
         </div>
       </div>
@@ -35,4 +47,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default observer(Navbar);

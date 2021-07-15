@@ -7,6 +7,8 @@ import VendorItem from "./VendorItem";
 import { useState } from "react";
 
 import vendorStore from '../stores/vendorStore'
+import authStore from '../stores/authStore'
+
 import { observer } from 'mobx-react'
 import VendorModal from "./Modal/VendorModal";
 
@@ -21,7 +23,7 @@ function VendorList() {
 
     const vendorsList = vendorStore.vendors
         .filter((shop) => shop.name.toLowerCase().includes(query.toLowerCase()))
-        .map((shop) => <VendorItem shops={shop}  text={query} />);
+        .map((shop) => <VendorItem shops={shop} text={query} />);
 
     return (
         <div>
@@ -31,7 +33,8 @@ function VendorList() {
                 placeholder="Search for your Gloves Brand"
                 onChange={(event) => setQuery(event.target.value)}
             />
-            <CreateNew onClick={openModal} />
+            {authStore.user && <CreateNew onClick={openModal} /> }
+
             <VendorModal isOpen={isOpen} closeModal={closeModal} />
             <div>
                 {/* push the data to ProductList file by using Props */}

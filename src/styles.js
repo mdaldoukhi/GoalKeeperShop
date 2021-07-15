@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { AiFillPlusCircle, AiOutlineDelete } from 'react-icons/ai';
 import {  FiEdit } from 'react-icons/fi';
+import {  FaSignOutAlt } from 'react-icons/fa';
 import {  MdArrowBack } from 'react-icons/md';
 
 
@@ -406,4 +407,7 @@ export const PostionPass = styled.span `
   position: absolute;
   top: 2px;
   right: 5px;
+`;
+export const SignoutButton = styled(FaSignOutAlt) `
+  font-size: 22px;
 `;

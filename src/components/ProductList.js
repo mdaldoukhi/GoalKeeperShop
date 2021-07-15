@@ -4,10 +4,12 @@ import { ListWrapper, ProductTile, SearchBar, CreateNew } from "../styles";
 import ProductItem from "./ProductItem";
 /* GLOBAL useState */
 import { useState } from "react";
-
 import { observer } from 'mobx-react'
 
 import AddButton from "./Modal/GlovesModal";
+
+import authStore from '../stores/authStore'
+
 
 
 function ProductList({ products, vendor }) {
@@ -29,8 +31,8 @@ function ProductList({ products, vendor }) {
                 placeholder="Search for your Gloves Brand"
                 onChange={(event) => setQuary(event.target.value)}
             />
-            <CreateNew onClick={openModal} />
-            <AddButton isOpen={isOpen} closeModal={closeModal} vendor={vendor}/>
+            {authStore.user && <CreateNew onClick={openModal} />}
+            <AddButton isOpen={isOpen} closeModal={closeModal} vendor={vendor} />
             <ListWrapper>
                 {/* push the data to ProductList file by using Props */}
                 {productList}

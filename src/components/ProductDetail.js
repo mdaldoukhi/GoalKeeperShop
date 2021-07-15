@@ -9,6 +9,8 @@ import { observer } from "mobx-react";
 /* Libraries */
 import { useParams, Link, Redirect } from "react-router-dom"
 
+import authStore from '../stores/authStore'
+
 /* Function will show the product Details */
 function ProductDetail() {
     const productSlug = useParams().productSlug
@@ -20,9 +22,10 @@ function ProductDetail() {
         <ProductDetails>
             <TopDetails>
                 <Link to="/products"><BackBtn></BackBtn></Link>
-                <DeleteButton
+                {authStore.user && <DeleteButton
                     gloveID={productCheck.id}
-                />
+                />}
+
             </TopDetails>
             <LeftDetail>
                 <img src={productCheck.image} alt={productCheck.name} />

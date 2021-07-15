@@ -7,6 +7,8 @@ import UpdateButton from '../components/Buttons/UpdateButton'
 import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
 
+import authStore from '../stores/authStore'
+
 
 function ProductItem(props) {
     const parts = props.glove.name.split((new RegExp(`(${props.text})`, 'gi')));
@@ -26,12 +28,13 @@ function ProductItem(props) {
             <ProductPrice>
                 PRICE: <span>{props.glove.price}</span> KD
             </ProductPrice>
-            <ProductFooter>
+            {authStore.user && <ProductFooter>
                 <UpdateButton glove={props.glove} />
                 <DeleteButton
                     gloveID={props.glove.id}
                 />
-            </ProductFooter>
+            </ProductFooter>}
+
         </ProductWrapper>
     );
 }
